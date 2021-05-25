@@ -1,0 +1,13 @@
+{
+  "name": "ZzzData",
+  "keywords": "data, min, max, history",
+  "description": "Simple Arduino / C++ library to get manipulate data",
+  "authors": {
+    "name": "Seralo",
+    "email": "seralo@free.fr",
+    "url": "https://github.com/seralo/ZzzData"
+  },
+  "version": "1.0.0",
+  "frameworks": "arduino",
+  "platforms": "*"
+}
