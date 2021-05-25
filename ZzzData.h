@@ -17,9 +17,9 @@ template <typename T=int> class ZzzData {
 		/** Add data to process */
 		T add(T input);
 		/** Get last value */
-		T get() {
-
+		T get();
 };
+
 
 /**
  * Base class to only store data
@@ -34,7 +34,7 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataValue : public ZzzDa
 		void reset() {
 			_last=DEFAULT_RESULT;
 		}
-		
+
 		ZzzDataValue() {
 			reset();
 		}
@@ -45,8 +45,8 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataValue : public ZzzDa
 		}
 
 		T get() {
-			return _last; 
-		}	
+			return _last;
+		}
 };
 
 /**
@@ -54,10 +54,11 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataValue : public ZzzDa
  *
  * T     is the type of data (default=int). Could be uint8_t, int8_t, uint16_t, int, float...
  */
-template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataMinMax : public ZzzDataValue<T, DEFAULT_RESULT> {
+template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataMinMax : public ZzzData<T> {
 	protected:
 		T _min;
 		T _max;
+		T _last;
 		bool _first;
 
 	public:
@@ -71,7 +72,7 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataMinMax : public ZzzD
 		ZzzDataMinMax() {
 			reset();
 		}
-		
+
 		/** Constructor with initial minimum and maximum values */
 		ZzzDataMinMax(T min, T max) {
 			_min=min;
@@ -104,13 +105,17 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataMinMax : public ZzzD
 			return input;
 		}
 		
+		T get() {
+			return _last;
+		}
+
 		/** Get current minimum value */
-		T min() final {
+		T min() {
 			return _min; 
 		}	
 
 		/** Get current maximum value */
-		T max() final {
+		T max() {
 			return _max; 
 		}	
 };
