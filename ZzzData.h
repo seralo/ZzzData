@@ -112,12 +112,12 @@ template <typename T=int, T DEFAULT_RESULT=-1> class ZzzDataMinMax : public ZzzD
 		/** Get current minimum value */
 		T min() {
 			return _min; 
-		}	
+		}
 
 		/** Get current maximum value */
 		T max() {
 			return _max; 
-		}	
+		}
 };
 
 
